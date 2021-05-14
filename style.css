@@ -1,0 +1,40 @@
+.service_area{
+  font-size: 12px;
+}
+.set_home a:link,
+.set_home a:visited,
+.go_junior a,
+.go_happybean a {
+  text-decoration: none;
+}
+.set_home a:hover,
+.set_home a:active{
+    text-decoration: underline;
+}
+.go_junior a:hover{
+  background-image: linear-gradient(90deg, red, orange, yellow, green, blue, navy, purple);
+  -webkit-background-clip: text;
+  color: transparent;
+
+  font-weight: bold;
+  font-size: 12px;
+}
+.go_happybean a:hover{
+  font-weight: bold;
+  color: green;
+}
+.service_area{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.start_page,
+.go_junior,
+.go_happybean{
+  margin: 10px 20px 10px 20px;
+}
+.logo_area{
+  display: flex;
+  font-size: 40px;
+  font-weight: bold;
+}
