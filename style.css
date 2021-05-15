@@ -1,5 +1,20 @@
+*{
+  box-sizing: border-box;
+}
+.wrap{
+  position: relative;
+  overflow: hidden;
+  min-width: 1400px;
+}
+.group_flex{
+  margin: 0 104px 0 104px;
+  padding: 0 30px 0 30px;
+}
 .service_area{
   font-size: 12px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .set_home a:link,
 .set_home a:visited,
@@ -15,7 +30,6 @@
   background-image: linear-gradient(90deg, red, orange, yellow, green, blue, navy, purple);
   -webkit-background-clip: text;
   color: transparent;
-
   font-weight: bold;
   font-size: 12px;
 }
@@ -23,18 +37,127 @@
   font-weight: bold;
   color: green;
 }
-.service_area{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-}
+
 .start_page,
 .go_junior,
 .go_happybean{
   margin: 10px 20px 10px 20px;
+  color: black;
 }
 .logo_area{
   display: flex;
   font-size: 40px;
+  font-weight: 900;
+  margin: 10px;
+  padding: 10px;
+}
+.main_title{
+  display: flex;
+  align-items: center;
+}
+.main_title-text{
+  display: flex;
+  font-size: 100;
+  color: #04D061;
+  margin: 10px 20px 10px 20px;
+}
+.search_area{
+  display: flex;
+  height: 60px;
+}
+.input_text{
+  height: 100%;
+  width: 540px;
+  font-size: 30px;
+  border-style: none;
+}
+.input_text:focus{
+  outline: none;
+}
+.search_window{
+  display: flex;
+  border: 3px solid #04D061;
+  align-items: center;
+}
+.search_keyboard,
+.search_list{
+  font-size: 30px;
+  margin: 10px;
+}
+.search_list{
+  color: #04D061;
+}
+.search_icon{
+  display: flex;
+  padding: 5px;
+  margin: 0px;
+  background-color: #04D061;
+  color: white;
+  font-size: 40px;
+  width: 72.8px;
+  align-items: center;
+  justify-content: center;
+}
+.gnb_inner{
+  display: flex;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 0 50px 0 10px;
+  border-top: 1px solid gray;
+  border-bottom:1px solid gray;
+}
+.list_nav,
+.list_nav_favorite_list{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 11px 0 11px 0;
+  margin: 0 0 0 20px;
+}
+.list_nav_favorite_list .nav_item a{
+  text-decoration: none;
+  color: black;
   font-weight: bold;
+}
+.group_nav{
+  display: flex;
+  margin-right: 50px;
+}
+.nav_item{
+  float: left;
+  margin: 0 0 0 10px;
+  display: inline-block;
+  text-align: center;
+  width: 50px;
+}
+.list_nav .nav_item a{
+  text-decoration: none;
+  color: #04D061;
+  font-weight: bold;
+  font-size: 15px;
+
+}
+#over{
+  width: 60px;
+}
+.block{
+  display: inline-block;
+  font-size: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+#ticker{
+  float: left;
+  width: 400px;
+  padding: 0;
+}
+.block li{
+  display: block;
+  height: 30px;
+  padding: 4px 0 0 5px;
+  list-style: none;
 }

@@ -5,38 +5,328 @@
     <title>hoiver</title>
     <script src="https://kit.fontawesome.com/6dbc707731.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+    jQuery(function($)
+    {
+        var ticker = function()
+        {
+            timer = setTimeout(function(){
+                $('#ticker li:first').animate( {marginTop: '-20px'}, 400, function()
+                {
+                    $(this).detach().appendTo('ul#ticker').removeAttr('style');
+                });
+                ticker();
+            }, 2000);
+          };
+    // 0번 이전 기능
+          $(document).on('click','.prev',function(){
+            $('#ticker li:last').hide().prependTo($('#ticker')).slideDown();
+            clearTimeout(timer);
+            ticker();
+            if($('#pause').text() == 'Unpause'){
+              $('#pause').text('Pause');
+            };
+          }); // 0번 기능 끝
+
+    // 1. 클릭하면 다음 요소 보여주기... 클릭할 경우 setTimeout 을 clearTimeout 해줘야 하는데 어떻게 하지..
+          $(document).on('click','.next',function(){
+                $('#ticker li:first').animate( {marginTop: '-20px'}, 400, function()
+                        {
+                            $(this).detach().appendTo('ul#ticker').removeAttr('style');
+                        });
+                clearTimeout(timer);
+                ticker();
+                //3 함수와 연계 시작
+                if($('#pause').text() == 'Unpause'){
+                  $('#pause').text('Pause');
+                }; //3 함수와 연계
+              }); // next 끝. timer 를 전연변수보다 지역변수 사용하는게 나을 것 같은데 방법을 모르겠네요.
+
+      //2. 재생정지기능 시작, 아직 다음 기능과 연동은 안됨...그래서 3을 만듦
+      var autoplay = true;
+          $(document).on('click','.pause',function(){
+                if(autoplay==true){
+                  clearTimeout(timer);
+                  $(this).text('재생');
+                  autoplay=false;
+                }else{
+                  autoplay=true;
+                  $(this).text('정지');
+                  ticker();
+                }
+              }); // 재생정지기능 끝
+      // 3. 재생정지 함수 시작. 2와 기능 동일함.
+        var tickerpause = function()
+      {
+        $('#pause').click(function(){
+          $this = $(this);
+          if($this.text() == 'Pause'){
+            $this.text('Unpause');
+            clearTimeout(timer);
+          }
+          else {jQuery(function($)
+    {
+        var ticker = function()
+        {
+            timer = setTimeout(function(){
+                $('#ticker li:first').animate( {marginTop: '-20px'}, 400, function()
+                {
+                    $(this).detach().appendTo('ul#ticker').removeAttr('style');
+                });
+                ticker();
+            }, 2000);
+          };
+    // 0번 이전 기능
+          $(document).on('click','.prev',function(){
+            $('#ticker li:last').hide().prependTo($('#ticker')).slideDown();
+            clearTimeout(timer);
+            ticker();
+            if($('#pause').text() == 'Unpause'){
+              $('#pause').text('Pause');
+            };
+          }); // 0번 기능 끝
+
+    // 1. 클릭하면 다음 요소 보여주기... 클릭할 경우 setTimeout 을 clearTimeout 해줘야 하는데 어떻게 하지..
+          $(document).on('click','.next',function(){
+                $('#ticker li:first').animate( {marginTop: '-20px'}, 400, function()
+                        {
+                            $(this).detach().appendTo('ul#ticker').removeAttr('style');
+                        });
+                clearTimeout(timer);
+                ticker();
+                //3 함수와 연계 시작
+                if($('#pause').text() == 'Unpause'){
+                  $('#pause').text('Pause');
+                }; //3 함수와 연계
+              }); // next 끝. timer 를 전연변수보다 지역변수 사용하는게 나을 것 같은데 방법을 모르겠네요.
+
+      //2. 재생정지기능 시작, 아직 다음 기능과 연동은 안됨...그래서 3을 만듦
+      var autoplay = true;
+          $(document).on('click','.pause',function(){
+                if(autoplay==true){
+                  clearTimeout(timer);
+                  $(this).text('재생');
+                  autoplay=false;
+                }else{
+                  autoplay=true;
+                  $(this).text('정지');
+                  ticker();
+                }
+              }); // 재생정지기능 끝
+      // 3. 재생정지 함수 시작. 2와 기능 동일함.
+        var tickerpause = function()
+      {
+        $('#pause').click(function(){
+          $this = $(this);
+          if($this.text() == 'Pause'){
+            $this.text('Unpause');
+            clearTimeout(timer);
+          }
+          else {
+            ticker();
+            $this.text('Pause');
+          }
+        });
+
+      };
+      tickerpause();
+      //3 재생정지 함수 끝
+      //4 마우스를 올렸을 때 기능 정지
+      var tickerover = function()
+      {
+        $('#ticker').mouseover(function(){
+          clearTimeout(timer);
+        });
+        $('#ticker').mouseout(function(){
+          ticker();
+        });
+      };
+      tickerover();
+      // 4 끝
+        ticker();
+
+    });
+            ticker();
+            $this.text('Pause');
+          }
+        });
+
+      };
+      tickerpause();
+      //3 재생정지 함수 끝
+      //4 마우스를 올렸을 때 기능 정지
+      var tickerover = function()
+      {
+        $('#ticker').mouseover(function(){
+          clearTimeout(timer);
+        });
+        $('#ticker').mouseout(function(){
+          ticker();
+        });
+      };
+      tickerover();
+      // 4 끝
+        ticker();
+
+    });
+
+    </script>
   </head>
   <body>
-    <header>
-      <div class="service_area">
-        <div class="set_home">
-          <a href="#" class="start_page">
-            호이버를 시작페이지로
-              <i class="fas fa-chevron-circle-right"></i>
-          </a>
+    <header class="wrap">
+      <div class="group_flex">
+        <div class="service_area">
+          <div class="set_home">
+            <a href="#" class="start_page">
+              호이버를 시작페이지로
+                <i class="fas fa-chevron-circle-right"></i>
+            </a>
+          </div>
+          <div class="go_junior">
+            <a href="#" class="junior_naver">
+              쥬니어호이버
+            </a>
+          </div>
+          <div class="go_happybean">
+            <a href="#" class="happybean">
+              호피빈
+            </a>
+          </div>
         </div>
-        <div class="go_junior">
-          <a href="#" class="junior_naver">
-            쥬니어호이버
-          </a>
-        </div>
-        <div class="go_happybean">
-          <a href="#" class="happybean">
-            해피빈
-          </a>
-        </div>
-      </div>
-      <div class="logo_area">
-        <div class="main_title">
-          <i class="fab fa-redhat"></i>
-          <span class="main_title-text">HOIVER</span>
-        </div>
-        <div class="search_area">
-          <div class="search_window">
-            <input type="text" class="input_text" placeholder="검색어를 입력하세요">
+        <div class="logo_area">
+          <div class="main_title">
+            <div class="main_icon">
+              <i class="fab fa-redhat"></i>
+            </div>
+            <span class="main_title-text">HOIVER</span>
+          </div>
+          <div class="search_area">
+            <div class="search_window">
+              <input type="text" class="input_text" placeholder="   검색어를 입력하세요"/>
+              <div class="search_keyboard">
+                <i class="fas fa-keyboard"></i>
+              </div>
+              <div class="search_list">
+                <i class="fas fa-caret-down"></i>
+              </div>
+            </div>
+            <div class="search_icon">
+              <i class="fas fa-search"></i>
+            </div>
           </div>
         </div>
       </div>
+      <div class="gnb_inner">
+        <div class="group_nav">
+          <ul class="list_nav">
+            <li class="nav_item">
+              <a href="#">
+                메일
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                카페
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                블로그
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                지식iN
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                쇼핑
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                쇼핑
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                Pay
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                <i class="fas fa-play-circle"></i>
+                TV
+              </a>
+            </li>
+          </ul>
+
+          <ul class="list_nav_favorite_list">
+            <li class="nav_item">
+              <a href="#">
+                사전
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                뉴스
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                증권
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                부동산
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                부동산
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                지도
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                VIBE
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                책
+              </a>
+            </li>
+            <li class="nav_item">
+              <a href="#">
+                웹툰
+              </a>
+            </li>
+          </ul>
+        </div>
+            <div class="block">
+              <ul id="ticker">
+                <li class="rolling_item">
+                  <i class="fas fa-cloud-showers-heavy"></i>
+                  22.0° 비 19.0 / 25.0 상도동<p></p>
+                </li>
+                <li class="rolling_item">
+                  미세 <i class="fas fa-smile"></i> 보통
+                </li>
+                <li>
+                  초미세 <i class="fas fa-frown"></i> 망함
+                </li>
+              </ul>
+        </div>
+      </div>
+
     </header>
     <main class="container">
 
